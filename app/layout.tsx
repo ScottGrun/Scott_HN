@@ -1,5 +1,7 @@
+import { Header } from '@/components/Header'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Sidebar } from '@/components/Sidebar/Sidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,7 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-[#0C0B10] text-white`}>
+        <Header className='lg:hidden' />
+        <div className='lg:grid xl:grid-cols-[316px_1fr]'>
+          <Sidebar className='hidden lg:block' />
+          {children}
+        </div>
+      </body>
     </html>
   )
 }

@@ -8,7 +8,15 @@ const nextConfig = {
                 permanent: true,
             },
         ]
-    }
+    },
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'robohash.org',
+          },
+        ],
+      },
 }
 
 module.exports = nextConfig

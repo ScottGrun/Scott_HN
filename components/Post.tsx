@@ -1,39 +1,9 @@
 import { ChatBubbleLeftEllipsisIcon, ChevronUpIcon, HandThumbUpIcon, LinkIcon } from "@heroicons/react/24/outline"
 import { cx } from "classix"
-
-interface PostProps {
-    title: string
-    url: string
-    time: number
-    by: string
-    score: number
-    id: number
-    kids: number[]
-    descendants: number
-}
+import { Post as PostProps } from '@/api/api'
+import { timeSince } from "@/helpers/timeSince"
 
 export const Post = ({ post }: { post: PostProps }) => {
-    const timeSince = (pastDate: number) => {
-        const milliseconds = new Date().getTime() - pastDate * 1000;
-        const seconds = Math.floor(milliseconds / 1000);
-        const minutes = Math.floor(seconds / 60);
-        const hours = Math.floor(minutes / 60);
-        const days = Math.floor(hours / 24);
-        const years = Math.floor(days / 365)
-
-
-        if (years > 0) {
-            return years === 1 ? `${years} year ago` : `${years} years ago`;
-        } else if (days > 0) {
-            return `${days} days ago`;
-        } else if (hours > 0) {
-            return hours === 1 ? `${hours} hour ago` : `${hours} hours ago`;
-        } else if (minutes > 0) {
-            return `${minutes} minutes ago`;
-        } else {
-            return `${seconds} seconds ago`;
-        }
-    }
 
     const getHostFromUrl = (url: string) => {
         if (!url) return null
@@ -43,7 +13,7 @@ export const Post = ({ post }: { post: PostProps }) => {
     }
 
     return (
-        <article className="md:grid grid-cols-[50px_1fr] gap-6 bg-[#121317] text-black p-4 rounded-[5px] md:p-6">
+        <article className="md:grid grid-cols-[50px_1fr] gap-6 bg-[#101417] text-black p-4 rounded-[5px] md:p-6">
 
             {post.score && <div className="hidden  md:block">
                 <ChevronUpIcon className="w-6 mx-auto text-[#ff6600]" />
